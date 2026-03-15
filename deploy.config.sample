@@ -1,0 +1,21 @@
+# Deployment Configuration
+REMOTE_USER="your_user"
+REMOTE_HOST="your_host.dreamhost.com"
+REMOTE_PATH="/home/your_user/your_site.com"
+SSH_PORT="22" # Default SSH port is 22
+
+# Optional: You can also move these here if they vary per server
+DRUPAL_PROFILE="standard"
+SITE_NAME="My Drupal 11 Site"
+PHP_BIN="/usr/local/bin/php83"
+
+# Database Configuration
+DB_NAME="db_name"
+DB_USER="db_username"
+DB_PASS="db_password"
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_PREFIX=""
+
+# Security
+HASH_SALT="random_string_here"
