@@ -30,17 +30,6 @@ error_handler() {
 build_project() {
     echo -e "${GREEN} Building project: Re-generating local dependencies...${NC}"
     composer install --no-dev --optimize-autoloader || error_handler "build_project"
-
-    echo -e "${GREEN} Generating web/sites/default/settings.php from template...${NC}"
-    
-    # Export variables so envsubst can see them
-    export DB_NAME DB_USER DB_PASS DB_HOST DB_PORT DB_PREFIX HASH_SALT
-    
-    # Use envsubst to replace database and security variables in the template.
-    # We use single quotes for the variable list to prevent the shell from expanding them here.
-    # envsubst only replaces the variables listed.
-    envsubst '$DB_NAME$DB_USER$DB_PASS$DB_HOST$DB_PORT$DB_PREFIX$HASH_SALT' \
-        < settings.php.template > web/sites/default/settings.php || error_handler "Generating settings.php"
 }
 
 upload_files() {
@@ -49,7 +38,6 @@ upload_files() {
         -e "ssh -p ${SSH_PORT:-22}" \
         --exclude='.git' \
         --exclude='web/sites/default/files' \
-        --exclude='web/sites/default/settings.local.php' \
         --exclude="$CONFIG_FILE" \
         --exclude='deploy.config.sample' \
         --exclude='deploy.sh' \
