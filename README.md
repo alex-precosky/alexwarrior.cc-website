@@ -22,7 +22,7 @@ One time setup:
 - Copy file `deploy.config.sample` to `deploy.config`
 - Enter real values the SSH host and mysql connection info placeholders
 
-And edit the default settings - copy `web/sites/default/settings.default.php` to `web/sites/default/settings.php` and enter database connection information at the very end.
+And edit the default settings - copy `web/sites/default/default.settings.php` to `web/sites/default/settings.php` and enter database connection information at the very end.
 
 Then to deploy:
 
